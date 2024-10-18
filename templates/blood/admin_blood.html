@@ -1,0 +1,235 @@
+{% extends 'blood/adminbase.html' %}
+{% block content %}
+{% load widget_tweaks %}
+<style>
+    /* General body styling */
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    /* Centering and styling the update form */
+    .xyz {
+        display: table;
+        margin: 30px auto;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    }
+
+    /* Blood type card styles */
+    .card {
+        border: none; /* Remove default border */
+        border-radius: 12px; /* Smooth corners */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover */
+    }
+
+    /* Adding a hover effect to the cards */
+    .card:hover {
+        transform: translateY(-10px); /* Lift card slightly on hover */
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+    }
+
+    /* Blood group heading styles */
+    .blood h2 {
+        font-size: 28px;
+        color: #ff3b3f; /* Red color for blood types */
+        font-weight: bold;
+    }
+
+    /* Card content spacing */
+    .card-body {
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Custom button styling for the update form */
+    .btn-primary {
+        background-color: #ff3b3f;
+        border-color: #ff3b3f;
+        font-weight: bold;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #e63235;
+        border-color: #e63235;
+    }
+
+    /* Form input styling */
+    .form-control {
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    /* Adjusting margin and alignment of form fields */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    /* Styling for the section header */
+    h3.text-center {
+        color: #ff3b3f;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+
+    /* Responsive improvements */
+    @media (max-width: 768px) {
+        .xyz {
+            padding: 15px;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .blood h2 {
+            font-size: 24px;
+        }
+    }
+</style>
+<br><br>
+
+<!-- Main content container -->
+<div class="container">
+
+    <!-- Row for blood type cards -->
+    <div class="row">
+        <!-- Blood group A+ -->
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>A+ <i class="fas fa-tint"></i></h2>
+                    </div>
+                    <br><br>
+                    <div>{{ A1.unit }}</div>                            
+                </div>
+            </div>
+        </div>
+
+        <!-- Blood group B+ -->
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>B+ <i class="fas fa-tint"></i></h2>
+                    </div>
+                    <br><br>
+                    <div>{{ B1.unit }}</div>                            
+                </div>
+            </div>
+        </div>
+
+        <!-- Blood group O+ -->
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>O+ <i class="fas fa-tint"></i></h2>
+                    </div>
+                    <br><br>
+                    <div>{{ O1.unit }}</div>                            
+                </div>
+            </div>
+        </div>
+
+        <!-- Blood group AB+ -->
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>AB+ <i class="fas fa-tint"></i></h2>
+                    </div>
+                    <br><br>
+                    <div>{{ AB1.unit }}</div>                            
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Blood group A- -->
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>A- <i class="fas fa-tint"></i></h2>
+                    </div>
+                    <br><br>
+                    <div>{{ A2.unit }}</div>                            
+                </div>
+            </div>
+        </div>
+
+        <!-- Blood group B- -->
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>B- <i class="fas fa-tint"></i></h2>
+                    </div>
+                    <br><br>
+                    <div>{{ B2.unit }}</div>                            
+                </div>
+            </div>
+        </div>
+
+        <!-- Blood group O- -->
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>O- <i class="fas fa-tint"></i></h2>
+                    </div>
+                    <br><br>
+                    <div>{{ O2.unit }}</div>                            
+                </div>
+            </div>
+        </div>
+
+        <!-- Blood group AB- -->
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>AB- <i class="fas fa-tint"></i></h2>
+                    </div>
+                    <br><br>
+                    <div>{{ AB2.unit }}</div>                            
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blood unit update form -->
+    <hr><br>
+    <h3 class="text-center">Update Blood Unit</h3><br>
+    <div class="xyz">
+        <form class="form-inline" method="POST">
+            {% csrf_token %}
+            <div class="form-group mx-sm-3 mb-6">
+                <select name="bloodgroup" class="form-control">
+                    <option disabled selected>Choose Blood Group</option>
+                    <option>O+</option>
+                    <option>O-</option>
+                    <option>A+</option>
+                    <option>A-</option>
+                    <option>B+</option>
+                    <option>B-</option>
+                    <option>AB+</option>
+                    <option>AB-</option>
+                </select>
+            </div>
+
+            <div class="form-group mx-sm-3 mb-6">
+                <input type="number" class="form-control" name="unit" placeholder="Unit">
+            </div>
+
+            <button type="submit" class="btn btn-primary mb-2">Update</button>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

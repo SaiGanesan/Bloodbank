@@ -1,0 +1,122 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" media="all">
+
+    <style>
+        .card-5 {
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            background-color: #ffffff;
+        }
+
+        .card-heading {
+            background-color: #f44336; /* Red color */
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .card-body {
+            padding: 30px;
+            background-color: #f9f9f9;
+        }
+
+        .input-group input {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+    color: black !important; /* Text color */
+    background-color: white; /* Background color */
+    font-size: 16px; /* Adjust font size if necessary */
+}
+
+.input-group input:focus {
+    border-color: #f44336; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(244, 67, 54, 0.5); /* Add shadow on focus */
+}
+
+     
+
+        .btn-danger {
+            background-color: #f44336; /* Red color */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn-danger:hover {
+            background-color: #d32f2f; /* Darker red on hover */
+        }
+    </style>
+</head>
+<body>
+    {% include 'blood/navbar.html' %}
+
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790">
+            <br><br><br>
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Admin Login</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="name">
+                                <label for="username" style="color: black;">Username</label>
+                            </div>
+                            <div class="value">
+                                <div class="input-group">
+                                    {% render_field form.username class="input--style-5" id="username" %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">
+                                <label for="password" style="color: black;">Password</label>
+                            </div>
+                            <div class="value">
+                                <div class="input-group">
+                                    {% render_field form.password class="input--style-5" id="password" %}
+                                </div>
+                            </div>
+                        </div>
+
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ form.non_field_errors }}
+                            </div>
+                        {% endif %}
+
+                        <div>
+                            <button class="btn btn--radius-2 btn-danger" type="submit">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'blood/footer.html' %}
+    <!-- Optional JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

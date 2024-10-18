@@ -1,0 +1,235 @@
+{% extends 'blood/adminbase.html' %}
+{% block content %}
+<style>
+    /* General body styling */
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    /* Card design */
+    .card {
+        border: none;
+        border-radius: 12px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Blood type heading styles */
+    .blood h2 {
+        font-size: 28px;
+        color: #ff3b3f;
+        font-weight: bold;
+    }
+
+    /* Icon size and margin */
+    .blood i {
+        font-size: 40px;
+        color: #ff3b3f;
+    }
+
+    /* Styling the number labels inside the cards */
+    .card-body div {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 15px;
+        color: #333;
+    }
+
+    /* Adding padding and spacing */
+    .card-body {
+        padding: 25px;
+        text-align: center;
+    }
+
+    /* Styling the total counts section */
+    .card-body div br {
+        margin-bottom: 5px;
+    }
+
+    /* Responsive improvements */
+    @media (max-width: 768px) {
+        .blood h2 {
+            font-size: 22px;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .blood i {
+            font-size: 36px;
+        }
+
+        .card-body div {
+            font-size: 20px;
+        }
+    }
+</style>
+
+<br><br>
+
+<!-- Main content container -->
+<div class="container">
+
+    <!-- Blood group status section -->
+    <div class="row">
+        <!-- Blood group A+ -->
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>A+ <i class="fas fa-tint"></i></h2>
+                    </div>
+                    <div>{{A1.unit}}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blood group B+ -->
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>B+ <i class="fas fa-tint"></i></h2>
+                    </div>
+                    <div>{{B1.unit}}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blood group O+ -->
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>O+ <i class="fas fa-tint"></i></h2>
+                    </div>
+                    <div>{{O1.unit}}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blood group AB+ -->
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>AB+ <i class="fas fa-tint"></i></h2>
+                    </div>
+                    <div>{{AB1.unit}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Row for negative blood types -->
+    <div class="row">
+        <!-- Blood group A- -->
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>A- <i class="fas fa-tint"></i></h2>
+                    </div>
+                    <div>{{A2.unit}}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blood group B- -->
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>B- <i class="fas fa-tint"></i></h2>
+                    </div>
+                    <div>{{B2.unit}}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blood group O- -->
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>O- <i class="fas fa-tint"></i></h2>
+                    </div>
+                    <div>{{O2.unit}}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blood group AB- -->
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <h2>AB- <i class="fas fa-tint"></i></h2>
+                    </div>
+                    <div>{{AB2.unit}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats for donors, requests, and approved requests -->
+    <hr>
+
+    <div class="row">
+        <!-- Total donors -->
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div>Total Donors <br>{{totaldonors}}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total requests -->
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <i class="fas fa-spinner"></i>
+                    </div>
+                    <div>Total Requests <br>{{totalrequest}}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Approved requests -->
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <i class="far fa-check-circle"></i>
+                    </div>
+                    <div>Approved Requests <br>{{totalapprovedrequest}}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total blood units -->
+        <div class="col-sm-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="blood">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <div>Total Blood Unit (in ml) <br>{{totalbloodunit}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

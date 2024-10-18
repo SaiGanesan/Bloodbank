@@ -1,0 +1,149 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" media="all">
+    <style>
+        /* Background for the page */
+        .page-wrapper {
+            background-color: #b31217; /* Dark red background */
+            min-height: 100vh;
+        }
+
+        /* Card styling */
+        .card-5 {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Heading style */
+        .card-heading {
+            background-color: #ff4b5c; /* Dark red heading background */
+            padding: 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .card-heading .title {
+            color: #fff; /* White text in the title */
+            text-align: center;
+        }
+
+        /* Input fields */
+        .input--style-5 {
+            background: #f2f2f2; /* Light gray background */
+            border: 1px solid #d9d9d9;
+            padding: 10px 20px;
+            width: 100%;
+            color: #333; /* Dark text color for readability */
+            border-radius: 5px;
+        }
+
+        .input--style-5:focus {
+            border-color: #ff4b5c; /* Red border on focus */
+            outline: none;
+            box-shadow: 0 0 5px rgba(255, 75, 92, 0.3);
+        }
+
+        /* Button styling */
+        .btn-danger {
+            background-color: #ff4b5c; /* Red background for login button */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .btn-danger:hover {
+            background-color: #ff1f3b; /* Darker red on hover */
+        }
+
+        /* Link styling */
+        a {
+            color: #007bff; /* Blue link color */
+        }
+
+        a:hover {
+            color: #0056b3; /* Darker blue on hover */
+        }
+
+        /* Text inside the form */
+        .name label {
+            font-weight: bold;
+            color: #333; /* Darker text color */
+        }
+
+        /* Centering the login button */
+        .card-body button {
+            display: block;
+            width: 100px;
+            margin: 0 auto;
+        }
+
+        /* Center alignment for the "register" link */
+        p {
+            color: #333;
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    {% include 'blood/navbar.html' %}
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790">
+            <br><br><br>
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Patient Login</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="name">
+                                <label for="username">Username</label>
+                            </div>
+                            <div class="value">
+                                <div class="input-group">
+                                    {% render_field form.username class="input--style-5" required="required" id="username" %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="value">
+                                <div class="input-group">
+                                    {% render_field form.password class="input--style-5" required="required" id="password" %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button class="btn btn--radius-2 btn-danger" type="submit">Login</button>
+                        </div>
+                    </form>
+                    <br>
+                    <p>Does not have an account? <a  href="/patient/patientsignup">Click here to register</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'blood/footer.html' %}
+    
+    <!-- Optional JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

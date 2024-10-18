@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Logout</title>
+    <style>
+        /* Body styling to fit black/red theme */
+        body {
+            background-color: #111; /* Dark background */
+            color: #fff; /* White text */
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Centering the logo */
+        .logo {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        /* Image styling */
+        .logo img {
+            width: 120px; /* Adjust size as needed */
+            height: auto;
+        }
+
+        /* Panel widget styling */
+        .panel {
+            background-color: #222; /* Dark panel */
+            border-radius: 10px; /* Smooth corners */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Soft shadow */
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        /* Heading styles */
+        h1 {
+            font-size: 48px;
+            color: #ff3b3f; /* Red color for the title */
+            font-weight: bold;
+            text-align: center;
+        }
+
+        h4 {
+            color: #eaeaea; /* Light gray for text */
+            font-weight: 300;
+            text-align: center;
+        }
+
+        /* Icon styling */
+        .login-icon {
+            text-align: center;
+            font-size: 60px;
+            color: #ff3b3f; /* Red logout icon */
+            margin-bottom: 20px;
+        }
+
+        /* Button styling */
+        .btn-back {
+            background-color: #ff3b3f;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            text-align: center;
+            display: block;
+            margin: 20px auto;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background-color: #ff1a1a;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .panel {
+                padding: 20px;
+            }
+
+            .btn-back {
+                font-size: 16px;
+                padding: 10px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar inclusion -->
+    {% include "blood/navbar.html" %}
+
+    <!-- Main content -->
+    <div class="container">
+        <div class="logo">
+            <h2><img src="{% static 'image/logout.png' %}" alt="logo"></h2>
+        </div>
+
+        <div class="panel widget">
+            <div class="panel-body">
+                <div class="login-icon">
+                    <i class="fa fa-sign-out"></i>
+                </div>
+                <h1 class="font-semibold text-center">You Have Been Logged Out</h1>
+                <h4 class="text-center mgbt-xs-20">Thank you for using our website</h4>
+                <!-- Back to homepage button -->
+                <a href="/" class="btn-back">Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer inclusion -->
+    {% include "blood/footer.html" %}
+</body>
+
+</html>

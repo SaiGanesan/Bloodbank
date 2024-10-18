@@ -1,0 +1,178 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" media="all">
+    <style>
+        .input--style-5 {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: white;
+            color: black;
+        }
+
+        .input-group input {
+            color: black; /* Ensure text is visible */
+        }
+
+        label {
+            color: black; /* Ensure labels are visible */
+        }
+
+        select {
+            color: black; /* Ensure select text is visible */
+        }
+
+        .form-row .name {
+            color: black; /* Ensure row names are visible */
+        }
+
+        .input-group .rs-select2 .select-dropdown {
+            color: black;
+            background-color: white;
+        }
+
+        .form-control::placeholder {
+            color: black; /* Ensure placeholder text is visible */
+        }
+    </style>
+</head>
+<body>
+    {% include 'blood/navbar.html' %}
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790">
+            <br><br><br>
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Donor Signup</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" autocomplete="off" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="form-row">
+                            <div class="name">
+                                <label for="first_name">First Name</label>
+                            </div>
+                            <div class="value">
+                                <div class="input-group">
+                                    {% render_field userForm.first_name|attr:'required:true' class="input--style-5" id="first_name" %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name">
+                                <label for="last_name">Last Name</label>
+                            </div>
+                            <div class="value">
+                                <div class="input-group">
+                                    {% render_field userForm.last_name|attr:'required:true' class="input--style-5" id="last_name" %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name">
+                                <label for="username">Username</label>
+                            </div>
+                            <div class="value">
+                                <div class="input-group">
+                                    {% render_field userForm.username|attr:'required:true' class="input--style-5" id="username" %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name">
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="value">
+                                <div class="input-group">
+                                    {% render_field userForm.password|attr:'required:true' class="input--style-5" id="password" %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name">
+                                <label for="bloodgroup">Blood Group</label>
+                            </div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="bloodgroup" id="bloodgroup" required>
+                                            <option disabled="disabled" selected="selected">Choose option</option>
+                                            <option>O+</option>
+                                            <option>O-</option>
+                                            <option>A+</option>
+                                            <option>A-</option>
+                                            <option>B+</option>
+                                            <option>B-</option>
+                                            <option>AB+</option>
+                                            <option>AB-</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name">
+                                <label for="address">Address</label>
+                            </div>
+                            <div class="value">
+                                <div class="input-group">
+                                    {% render_field donorForm.address|attr:'required:true' class="input--style-5" id="address" %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name">
+                                <label for="mobile">Mobile</label>
+                            </div>
+                            <div class="value">
+                                <div class="input-group">
+                                    {% render_field donorForm.mobile|attr:'required:true' class="input--style-5" id="mobile" %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name">
+                                <label for="profile_pic">Profile Pic</label>
+                            </div>
+                            <div class="value">
+                                <div class="input-group">
+                                    {% render_field donorForm.profile_pic|attr:'required:true' class="input--style-5" id="profile_pic" %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button class="btn btn--radius-2 btn-danger" type="submit">Register</button>
+                        </div>
+                    </form>
+                    <br>
+                    <p style="text-align: center;">Already have an account? <a style="text-decoration: none;" href="/donor/donorlogin">Click here to login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'blood/footer.html' %}
+    
+    <!-- Optional JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+
+<head>
+    <style>
+        /* Base styles for body and html */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Arial', sans-serif;
+            background-color: #000; /* Black background */
+            color: white;
+        }
+
+        /* Main section with black and red theme */
+        .xyz {
+            background-color: #1a1a1a; /* Darker shade of black */
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #ff3b3f; /* Bright red text */
+            padding: 50px 20px;
+        }
+
+        /* Main message style */
+        .container {
+            font-size: 40px;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.7); /* Red text shadow */
+        }
+
+        /* Quote and Image container */
+        .quote-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Quote style */
+        .lead {
+            background-color: rgba(255, 59, 63, 0.1); /* Transparent red background */
+            color: #ff3b3f; /* Bright red */
+            padding: 20px;
+            margin: 20px;
+            border: 2px solid #ff3b3f; /* Red border */
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4); /* Subtle red shadow */
+            font-size: 22px;
+            flex: 1;
+        }
+
+        /* Image style */
+        .quote-image {
+            margin-left: 20px; /* Space between image and quote */
+            max-width: 150px; /* Image size */
+            max-height: 150px;
+        }
+
+        /* Footer matches navbar with dark and red tones */
+        .footer {
+            background-color: #1a1a1a; /* Dark background */
+            color: #ff3b3f; /* Red text */
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 576px) {
+            .container {
+                font-size: 28px; /* Adjusted for small screens */
+            }
+
+            .lead {
+                font-size: 18px; /* Adjusted quote size */
+            }
+
+            .quote-image {
+                max-width: 100px; /* Smaller image for mobile */
+                max-height: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Include the Navbar -->
+    {% include "blood/navbar.html" %}
+  
+    <!-- Main section with the black and red theme -->
+    <section id="section-jumbotron" class="xyz">
+        <div class="container">
+            "Every drop counts. Donate blood, save lives."
+        </div>
+    </section>
+
+    <!-- Quote section with image on the right -->
+    <div class="jumbotron" style="margin: 0; padding: 20px; background-color: #111;">
+        <div class="quote-container">
+            <!-- Quote on the left -->
+            <p class="lead text-center">"The gift of blood is the gift of life. Be a donor."</p>
+            <!-- Image on the right -->
+            <img src="{% static 'image/bloo.png' %}" class="quote-image" alt="Blood Donation">
+        </div>
+    </div>
+
+    <!-- Footer section -->
+    <div class="footer">
+        Blood Bank Management System &copy; 2024
+    </div>
+
+</body>
+</html>
